@@ -18,7 +18,15 @@ function App() {
 	const addItem = (event, item) => {
 		
 		event.preventDefault();
+
 		setCart([...cart, item]);
+	};
+
+	const removeItem = (event, id) => {
+		
+		event.preventDefault();
+		
+		setCart(cart.filter(item => item.id !== id));
 	};
 
 	return (
@@ -36,7 +44,7 @@ function App() {
 				/>
 			</ProductContext.Provider>
 
-			<ProductContext.Provider value={{products, addItem}}>
+			<ProductContext.Provider value={{products, addItem, removeItem}}>
 				<CartContext.Provider value={{cart}}>
 					<Route
 						path="/cart"
